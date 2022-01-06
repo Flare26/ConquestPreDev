@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Conductor
+  - TurretHead
+  - Wall
+  - Turret
+  - NPC
+  - Bullet
+  - Floor
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -15,12 +23,12 @@ TagManager:
   - 
   - PostProcessing
   - Not in Reflection
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Physics Projectiles
+  - Projectiles
+  - NPCs
+  - Plow
+  - Debris
+  - Environment
   - 
   - 
   - 

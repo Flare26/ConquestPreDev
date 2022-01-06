@@ -49,7 +49,6 @@ MonoBehaviour:
   graphElementName: Is at destination?
   description: 
   aiGraph: {fileID: 7047116772480963309}
-  guid: 90c3d021-ef2c-488e-bf5d-0ae61b908ea7
   scorers:
   - {fileID: 5328464920117707819}
   lastScore: 0
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 7047116772480963309}
-  position: {x: -152, y: -88}
+  position: {x: -312, y: -136}
   ports:
     keys:
     - input
@@ -116,74 +115,74 @@ MonoBehaviour:
     values:
     - _fieldName: input
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
     - _fieldName: output7
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output6
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output5
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output4
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output3
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output2
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
     - _fieldName: output1
       _node: {fileID: 282791610297084922}
-      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility, RVSmartAI,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: RVModules.RVSmartAI.GraphElements.Utilities.AiUtility,
+        RVSmartAI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
       _dynamic: 0
   _name: Highest Utility Wins Stage Node
+  expanded: 1
+  selectedElement: {fileID: 0}
   description: 
   aiGraph: {fileID: 7047116772480963309}
-  expanded: 1
   stage: {fileID: 3824877768054008891}
-  selectedElement: {fileID: 5699172814066813083}
   output1: {fileID: 0}
   output2: {fileID: 0}
   output3: {fileID: 0}
@@ -242,7 +241,6 @@ MonoBehaviour:
   utilities:
   - {fileID: 718678228849846021}
   - {fileID: 1825006037165270344}
-  name: 
 --- !u!1 &3957660992854244792
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +252,7 @@ GameObject:
   - component: {fileID: 7784544015266614824}
   - component: {fileID: 5328464920117707819}
   m_Layer: 0
-  m_Name: ' (AtDestinationScorer)'
+  m_Name: ' (AtDestination)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,22 +421,27 @@ MonoBehaviour:
   nodes:
   - {fileID: 282791610297084922}
   description: Agent will go through waypoints in order
-  isRuntimeDebugGraph: 0
-  carrier: 
+  owner: {fileID: 0}
   parentGraph: {fileID: 0}
   graphStepsPerUpdate: 9999
   rootNode: {fileID: 282791610297084922}
-  graphVariables: {fileID: 0}
+  subGraphBlockingTask: 0
+  graphAiVariables: {fileID: 0}
   aiGraphConfig:
     aiGraph: {fileID: 0}
     updateFrequency: 2
     useCustomLoadBalancerConfig: 0
+    expandPerfInfo: 0
+    scalableLoadBalancing: 0
+    maxAllowedUpdateFrequency: 120
     loadBalancerConfig:
       name: 
       loadBalancerType: 0
-      value: 0
+      valueX: 0
+      valueY: 0
       calculateDeltaTime: 0
       useUnscaledDeltaTime: 0
+      dontRemoveWhenEmpty: 0
     overrideGraphVariablesForNestedGraphs: 1
   winners: []
   winNodes: []
@@ -489,7 +492,6 @@ MonoBehaviour:
   graphElementName: Default utility
   description: 
   aiGraph: {fileID: 7047116772480963309}
-  guid: 5797d696-c492-44d4-85c8-fb442a504528
   scorers: []
   lastScore: 0
   tasks: []
