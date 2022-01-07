@@ -11,7 +11,7 @@ public class PlayerTA : MonoBehaviour
     public Image trackingReticle;
     public Image reticle;
     [SerializeField] float targetingZoneRadius;
-    GameObject currentLock;
+    public GameObject currentLock;
     int h = 0; // always start 0
     public List<GameObject> inRange;
     [Header("Crosshair Auto Lock Parameters")]
@@ -19,18 +19,26 @@ public class PlayerTA : MonoBehaviour
     public float spherecast_r = 10f;
     public float sweetspot = 0.10f; // in viewport space on scale from 0 left to 1 right
     TeamManager myTM;
-    public Camera pcam;
-    RaycastHit camRay;
+    PlayerManager myPM;
+    public Camera playerCameraReference;
+    
     public GameObject aimIndicator;
     CapsuleCollider targetingAreaTrigger;
-    Transform pbs;
-    Transform sbs;
+    WepV2 primaryWep;
+    WepV2 secondaryWep;
     // make an activate + deactivate method for the lock on and have them erase the Q when turned off
     void Awake()
     {
-        targetingAreaTrigger = GetComponent<CapsuleCollider>();
+        myPM = GetComponent<PlayerManager>();
         myTM = gameObject.GetComponent<TeamManager>();
+        if (myPM.weapon0)
+            myPM.weapon0.TryGetComponent<WepV2>(out primaryWep);
+        if (myPM.weapon1)
+            myPM.weapon1.TryGetComponent<WepV2>(out primaryWep);
+
+        targetingAreaTrigger = GetComponent<CapsuleCollider>();
         inRange = new List<GameObject>();
+
         InvokeRepeating("TargetingTick", 0.25f, 0.25f);
         trackingReticle.enabled = false;
         targetingAreaTrigger.radius = targetingZoneRadius;
@@ -54,10 +62,6 @@ public class PlayerTA : MonoBehaviour
         inRange.TrimExcess();
     }
 
-    void TargetingTick()
-    {
-        // re-design the targeting tick
-    }
 
     /*
 
@@ -114,41 +118,65 @@ public class PlayerTA : MonoBehaviour
         if (inRange.Count < 1)
             currentLock = null;
     }*/
-        void AimGuns(Transform t)
+    void AimGuns(Transform t)
         {
-            // Need direction to the target
-            //Debug.Log("Aim Dem Guns");
+        // Need direction to the target
+        //Debug.Log("Aim Dem Guns");
 
-            pbs.LookAt(t.position);
-            sbs.LookAt(t.position);
+        Transform firepoint = primaryWep.GetActiveFP();
+        firepoint.LookAt(t.position);
+            //sbs.LookAt(t.position);
         }
 
-        void TrackReticle(Image r, GameObject t)
+    void TrackReticle(Image r, GameObject t)
         {
         // phase out camera.main eventually PLEASE
             Vector3 viewport = Camera.main.WorldToViewportPoint(t.transform.position);
             Vector3 screen = Camera.main.ViewportToScreenPoint(viewport);
             r.gameObject.transform.position = screen;
         }
-        
-        void FixedUpdate()
+    void TargetingTick()
+    {
+        // re-design the targeting tick
+        RaycastHit camRayInfo;
+        int layer = 7; // for ray layer masking
+        if (Physics.SphereCast(transform.position, spherecast_r, playerCameraReference.transform.forward, out camRayInfo, lockRange, layer))
         {
-            if (currentLock)
+            // each tick check for 
+            if ( camRayInfo.transform.CompareTag("NPC") )
             {
-            Debug.Log("Player is engaging!");
-            Transform aimspot = currentLock.transform;
-                trackingReticle.enabled = true;
-                AimGuns(aimspot);
-                TrackReticle(trackingReticle, currentLock);
+                Debug.Log("Enemy Detected");
+                MovedIntoRange(camRayInfo.transform.gameObject);
+                var w2vp = Camera.main.WorldToViewportPoint(camRayInfo.transform.position); // world to view point
+                if (w2vp.x < 0.5f - sweetspot && w2vp.x < 0.5f + sweetspot)
+                    Debug.Log("Enemy In Sweet Spot");
             }
-            else
-        {
-            //Debug.Log("Lock is null!");
-            trackingReticle.enabled = false;
+
         }
+
+            currentLock = camRayInfo.transform.gameObject;
+
         
 
-            
+
+    }
+        
+    void FixedUpdate()
+        {
+
+            if (currentLock)
+                {
+                //Debug.Log("Player is engaging!");
+                Transform aimspot = currentLock.transform;
+                    trackingReticle.enabled = true;
+                    AimGuns(aimspot);
+                    TrackReticle(trackingReticle, currentLock);
+                }
+                else
+            {
+                //Debug.Log("Lock is null!");
+                trackingReticle.enabled = false;
+            }
         }
     
     private void OnTriggerEnter(Collider other)
@@ -174,7 +202,4 @@ public class PlayerTA : MonoBehaviour
         }
 
     }
-    void Update()
-        {
-        }
 }

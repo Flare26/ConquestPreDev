@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using TMPro;
+using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,9 +15,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Slider shSlider;
     [SerializeField] Slider boostSlider;
     // Texts
-    [SerializeField] Text speedometer;
-    [SerializeField] Text hpPrintout;
-    [SerializeField] Text shPrintout;
+    [SerializeField] TMP_Text hpPrintout;
+    [SerializeField] TMP_Text shPrintout;
     [SerializeField] Text boostPrintout;
     [SerializeField] Text wep0Name;
     [SerializeField] Text wep1Name;
@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
     HoverController hvcon;
     public float sinceLastDMG = 0f;
     Rigidbody rb;
-
+    
 
 
     // Boost
@@ -198,7 +198,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void UpdateUI()
     {
-        speedometer.text = rb.velocity.ToString();
+        //speedometer.text = rb.velocity.ToString();
         hpSlider.value = currentHull;
         shSlider.value = currentShield;
         boostSlider.value = currentBoostEnergy;
