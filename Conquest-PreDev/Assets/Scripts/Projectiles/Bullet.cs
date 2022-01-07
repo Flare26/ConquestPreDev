@@ -20,8 +20,13 @@ public abstract class Bullet : MonoBehaviour
         var other = collision.gameObject;
         if (other.transform.CompareTag("Wall"))
         {
-            //Debug.Log("Congrats you shot a wall...");
-            var tmp = Instantiate(emitterOnCollision, transform, true);
+                //Debug.Log("Congrats you shot a wall...");
+            if (emitterOnCollision != null)
+            {
+                var tmp = Instantiate(emitterOnCollision, transform, true);
+                tmp.Play();
+                Destroy(tmp, 5f);
+            }
             DestroyBullet();
             return;
         }
@@ -29,10 +34,13 @@ public abstract class Bullet : MonoBehaviour
         {
             //Debug.Log("Congrats you shot the floor...");
             Debug.Log("Bullet hit floow");
-            var tmp = Instantiate(emitterOnCollision);
-            tmp.Play();
-            Destroy(tmp, 5f);
-            DestroyBullet();
+            if (emitterOnCollision != null)
+            {
+                var tmp = Instantiate(emitterOnCollision);
+                tmp.Play();
+                Destroy(tmp, 5f);
+                DestroyBullet();
+            }
             return;
         }
         if (other.CompareTag("Bullet"))
@@ -50,9 +58,13 @@ public abstract class Bullet : MonoBehaviour
     }
     private void OnDestroy()
     {
-        var tmp = Instantiate(emitterOnCollision, transform.position, transform.rotation);
-        tmp.Play();
-        Destroy(tmp, 5f);
+        if (emitterOnCollision != null)
+        {
+            var tmp = Instantiate(emitterOnCollision, transform.position, transform.rotation);
+            tmp.Play();
+            Destroy(tmp, 5f);
+
+        }
     }
 
     public void HitTarget()

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa0f92bc5d154aae8ba2b5566c74e19d, type: 3}
-  m_Name: RedWarriors
+  m_Name: BlueWarriors
   m_EditorClassIdentifier: 
   allies: []
   enemies:
-  - {fileID: 11400000, guid: 382c633e4e083b64786444f456fbacbd, type: 2}
+  - {fileID: 11400000, guid: 6d23fa68ae039ab4690debf1f92f9a29, type: 2}
+  - {fileID: 11400000, guid: 6d23fa68ae039ab4690debf1f92f9a29, type: 2}
   enemyToAll: 0
   allyToAll: 0

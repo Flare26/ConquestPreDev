@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3958935574791872133}
   - component: {fileID: 6468131806295290030}
   - component: {fileID: 1600296255399844629}
+  - component: {fileID: 3076525210521193957}
   m_Layer: 2
   m_Name: RedPew(Bot)
   m_TagString: Bullet
@@ -441,3 +442,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyFX: {fileID: 6821978494458994580, guid: 26df4340c0af60249876fdb791a8197c, type: 3}
+--- !u!114 &3076525210521193957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667101032445687302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc625bb68648654f8bfc714fcf8bb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TTL: 10
+  bullet_velocity: 50
+  m_dmg: 3
+  emitterOnCollision: {fileID: 0}

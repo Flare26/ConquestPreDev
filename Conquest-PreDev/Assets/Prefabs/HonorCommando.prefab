@@ -241,7 +241,7 @@ MonoBehaviour:
   nearbyObjects: []
   aiGroup: {fileID: 11400000, guid: 382c633e4e083b64786444f456fbacbd, type: 2}
   state: 0
-  courage: 90
+  courage: 117
   fovMask:
     serializedVersion: 2
     m_Bits: 4097

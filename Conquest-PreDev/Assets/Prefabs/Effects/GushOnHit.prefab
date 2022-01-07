@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6821978494458994578}
   - component: {fileID: 6821978494458994579}
   m_Layer: 0
-  m_Name: DeathExplode1
+  m_Name: GushOnHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -659,8 +659,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
-    angle: 40
+    type: 4
+    angle: 65.09
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -804,7 +804,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 0
+      mode: 2
       spread: 0
       speed:
         serializedVersion: 2
@@ -1033,8 +1033,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 50
-        minScalar: 30
+        scalar: 30
+        minScalar: 15
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1085,7 +1085,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 10
       repeatInterval: 0.2
-      probability: 0.42
+      probability: 0
   SizeModule:
     enabled: 1
     curve:

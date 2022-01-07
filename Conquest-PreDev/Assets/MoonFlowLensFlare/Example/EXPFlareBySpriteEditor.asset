@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa0f92bc5d154aae8ba2b5566c74e19d, type: 3}
-  m_Name: BlueWarriors
+  m_Script: {fileID: 11500000, guid: ee9ae5c0e1ba4003ba89970012ed4df9, type: 3}
+  m_Name: EXPFlareBySpriteEditor
   m_EditorClassIdentifier: 
-  allies: []
-  enemies:
-  - {fileID: 11400000, guid: 6d23fa68ae039ab4690debf1f92f9a29, type: 2}
-  enemyToAll: 0
-  allyToAll: 0
+  flareSprite: {fileID: 2800000, guid: 3e5c1addf72b4e44183b2274beecbd11, type: 3}
+  fadeWithScale: 0
+  fadeWithAlpha: 0
+  spriteBlocks: []
