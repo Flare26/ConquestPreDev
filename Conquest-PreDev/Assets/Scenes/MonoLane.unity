@@ -2921,6 +2921,10 @@ PrefabInstance:
       propertyPath: playerCameraReference
       value: 
       objectReference: {fileID: 584796554}
+    - target: {fileID: 7509163249406576068, guid: 568c79c993c6bef42900e42ec025c68b, type: 3}
+      propertyPath: tgtIndicatorVertOffset
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8134308699307801494, guid: 568c79c993c6bef42900e42ec025c68b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

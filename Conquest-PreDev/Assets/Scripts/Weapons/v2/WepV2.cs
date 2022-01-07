@@ -19,6 +19,9 @@ using UnityEngine.UI;
         private float curr_fireRate;
         public bool reloading = false;
         [SerializeField] public Transform [] firePoints;
+
+    Transform[] firePointBackups;
+
         [SerializeField] public Transform activeFP_obj;
         private bool holdToShoot;
         private bool readyToShoot;
@@ -26,7 +29,7 @@ using UnityEngine.UI;
         //private bool shooting1;
         private int bulletsShot;
         private int bulletsPerTap;
-        private int activeFP;
+        public int activeFP;
         private Text ammo;
         private Text rld;
         public float spinupTime;
@@ -39,7 +42,7 @@ using UnityEngine.UI;
             Debug.Log("Loaded weapon prefab: " + stats.wepName);
             ammo = GameObject.Find("AmmoTXT").GetComponent<Text>();
             rld = GameObject.Find("RldTXT").GetComponent<Text>();
-        
+        firePointBackups = firePoints;
         }
         private void OnEnable()
         {
@@ -51,6 +54,7 @@ using UnityEngine.UI;
             holdToShoot = stats.allowHoldToShoot;
             name = stats.wepName;
             readyToShoot = true;
+        
         }
 
         public bool Reload()
@@ -124,9 +128,9 @@ using UnityEngine.UI;
 
         }
 
-        public Transform GetActiveFP()
+        public void AimFP(Transform fp, Transform lookat)
     {
-        return firePoints[activeFP];
+         fp.LookAt(lookat);
     }
 
         private void ConfirmShot()

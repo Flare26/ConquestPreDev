@@ -2148,6 +2148,8 @@ MonoBehaviour:
   boostChargeDelay: 3
   currentBoostEnergy: 0
   maxBoostEnergy: 3
+  wpc0: {fileID: 0}
+  wpc1: {fileID: 0}
 --- !u!114 &7509163249406576068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,9 +2163,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingReticle: {fileID: 6992251499820159187}
+  tgtIndicatorVertOffset: 4
   reticle: {fileID: 8436653448053847245}
   targetingZoneRadius: 35
-  currentLock: {fileID: 0}
+  worldspaceLock: {fileID: 0}
   inRange: []
   lockRange: 75
   spherecast_r: 1

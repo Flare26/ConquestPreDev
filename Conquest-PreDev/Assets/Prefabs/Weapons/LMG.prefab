@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 738832683668842509}
   - {fileID: 7634980169405123062}
   activeFP_obj: {fileID: 0}
+  activeFP: 0
   spinupTime: 0
   maxFireRate: 0
 --- !u!1 &6017542124942454084
@@ -79,7 +80,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017542124942454084}
-  m_LocalRotation: {x: 0.18312249, y: 0.1847504, z: -0.68276584, w: 0.6827623}
+  m_LocalRotation: {x: 0.18112412, y: 0.18137059, z: -0.6836724, w: 0.6832941}
   m_LocalPosition: {x: -0.25017452, y: -0.2498254, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

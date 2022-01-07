@@ -51,9 +51,9 @@ public class PlayerManager : MonoBehaviour
     bool hasShield = false;
     // weapon instances
     GameObject i0;
-    WepV2 wpc0;
+    public WepV2 wpc0;
     GameObject i1;
-    WepV2 wpc1;
+    public WepV2 wpc1;
     // Start is called before the first frame update
 
     void OnEnable()

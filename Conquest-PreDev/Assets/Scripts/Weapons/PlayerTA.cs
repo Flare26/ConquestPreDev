@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +8,13 @@ public class PlayerTA : MonoBehaviour
     // Player Targeting Agent
     
     public Image trackingReticle;
+    RectTransform trackingReticleTform;
+    public float tgtIndicatorVertOffset;
     public Image reticle;
     [SerializeField] float targetingZoneRadius;
-    public GameObject currentLock;
+    public Transform worldspaceLock;
     int h = 0; // always start 0
-    public List<GameObject> inRange;
+    public List<Transform> inRange;
     [Header("Crosshair Auto Lock Parameters")]
     public float lockRange = 50f;
     public float spherecast_r = 10f;
@@ -26,18 +27,16 @@ public class PlayerTA : MonoBehaviour
     CapsuleCollider targetingAreaTrigger;
     WepV2 primaryWep;
     WepV2 secondaryWep;
+
+    RaycastHit lastCastHit;
     // make an activate + deactivate method for the lock on and have them erase the Q when turned off
     void Awake()
     {
         myPM = GetComponent<PlayerManager>();
         myTM = gameObject.GetComponent<TeamManager>();
-        if (myPM.weapon0)
-            myPM.weapon0.TryGetComponent<WepV2>(out primaryWep);
-        if (myPM.weapon1)
-            myPM.weapon1.TryGetComponent<WepV2>(out primaryWep);
-
+        trackingReticleTform = trackingReticle.rectTransform;
         targetingAreaTrigger = GetComponent<CapsuleCollider>();
-        inRange = new List<GameObject>();
+        inRange = new List<Transform>();
 
         InvokeRepeating("TargetingTick", 0.25f, 0.25f);
         trackingReticle.enabled = false;
@@ -45,155 +44,116 @@ public class PlayerTA : MonoBehaviour
     }
 
 
-    public void MovedIntoRange(GameObject tgt)
+    public void MovedIntoRange(Transform tgt)
     {
+        foreach ( Transform t in inRange)
+        {
+            if (tgt.Equals(t))
+            {
+                return;
+            }
+        }
         inRange.Add(tgt);
-        inRange.TrimExcess();
+        
     }
-    public void RemoveAndTrim(GameObject t)
+    public void RemoveAndTrim(Transform t)
     {
         inRange.Remove(t);
         inRange.TrimExcess();
     }
 
-    public void MovedOutOfRange(GameObject tgt)
+    public void MovedOutOfRange(Transform tgt)
     {
         inRange.Remove(tgt);
         inRange.TrimExcess();
     }
-
-
-    /*
-
-    void TargetingTick()
-    {
-        //Debug.DrawRay(pcam.transform.position, pcam.transform.forward, Color.cyan, 0.5f);
-        if (Physics.SphereCast(pcam.transform.position, spherecast_r, pcam.transform.forward, out camRay, lockRange))
-        {
-            //Debug.Log("Spherecast hit something!");
-            TeamManager tm;
-            aimIndicator.transform.position = camRay.point;
-            if (camRay.transform.gameObject.TryGetComponent<TeamManager>(out tm))
-            {
-                if (tm.isTgtable == false)
-                    return;
-
-                if (!tm.m_Team.Equals(myTM.m_Team) && !inRange.Contains(camRay.transform.gameObject))
-                {
-                    // Dont add if its ouside of the sweet spot
-                    var viewportPt = Camera.main.WorldToViewportPoint(camRay.transform.position);
-                    if (viewportPt.x < 0.5f - sweetspot || viewportPt.x > 0.5f + sweetspot)
-                        return;
-                    Debug.Log("Enemy Detected");
-                    MovedIntoRange(camRay.transform.gameObject);
-
-                    currentLock = camRay.transform.gameObject;
-                }
-
-            }
-        }
-
-        for (int i = 0; i < inRange.Count; i++)
-        {
-            if (!inRange[i])
-                return;
-
-            Renderer r = inRange[i].gameObject.GetComponentInChildren<Renderer>();
-
-            var viewportPt = Camera.main.WorldToViewportPoint(inRange[i].transform.position);
-            //Debug.Log(viewportPt + inRange[i].name);
-
-            if (viewportPt.x < 0.5f - sweetspot || viewportPt.x > 0.5f + sweetspot)
-            {
-                Debug.Log("Moved out of sweetspot");
-                RemoveAndTrim(inRange[i]);
-            }
-            // check into r.isVisible alternatives
-            else if (!r.isVisible || Vector3.Distance(gameObject.transform.position, inRange[i].transform.position) > lockRange)
-            {
-                Debug.Log("Target became not visible or too far away");
-                RemoveAndTrim(inRange[i]);
-            }
-        }
-        if (inRange.Count < 1)
-            currentLock = null;
-    }*/
-    void AimGuns(Transform t)
+    void BarrelToTarget(WepV2 wepv2instance)
         {
         // Need direction to the target
         //Debug.Log("Aim Dem Guns");
-
-        Transform firepoint = primaryWep.GetActiveFP();
-        firepoint.LookAt(t.position);
+        // firepoint = wpc.curr fire point Transform
+        Transform firepoint = primaryWep.firePoints[primaryWep.activeFP];
+        wepv2instance.AimFP(firepoint, worldspaceLock.transform);
             //sbs.LookAt(t.position);
         }
 
-    void TrackReticle(Image r, GameObject t)
+    void LockReticleUpdate(Vector3 worldSpaceTarg)
         {
         // phase out camera.main eventually PLEASE
-            Vector3 viewport = Camera.main.WorldToViewportPoint(t.transform.position);
-            Vector3 screen = Camera.main.ViewportToScreenPoint(viewport);
-            r.gameObject.transform.position = screen;
+        Vector3 tmp = worldSpaceTarg;
+        tmp.y += tgtIndicatorVertOffset;
+        trackingReticleTform.position = Camera.main.WorldToScreenPoint(tmp);
         }
     void TargetingTick()
     {
         // re-design the targeting tick
         RaycastHit camRayInfo;
-        int layer = 7; // for ray layer masking
-        if (Physics.SphereCast(transform.position, spherecast_r, playerCameraReference.transform.forward, out camRayInfo, lockRange, layer))
+        //int layer = 7; // for ray layer masking
+        if (Physics.SphereCast(transform.position, spherecast_r, playerCameraReference.transform.forward, out camRayInfo, lockRange))
         {
+            lastCastHit = camRayInfo;
+            var colliderfound = camRayInfo.collider;
             // each tick check for 
-            if ( camRayInfo.transform.CompareTag("NPC") )
+            if ( colliderfound.CompareTag("NPC") )
             {
                 Debug.Log("Enemy Detected");
-                MovedIntoRange(camRayInfo.transform.gameObject);
+                MovedIntoRange(camRayInfo.transform);
                 var w2vp = Camera.main.WorldToViewportPoint(camRayInfo.transform.position); // world to view point
-                if (w2vp.x < 0.5f - sweetspot && w2vp.x < 0.5f + sweetspot)
-                    Debug.Log("Enemy In Sweet Spot");
+                
+                if (w2vp.x < 0.5f - sweetspot && w2vp.x > 0.5f + sweetspot)
+                    Debug.Log("Enemy Left Sweet Spot");
+                worldspaceLock = colliderfound.transform;
+                trackingReticle.enabled = true;
             }
-
+                
         }
-
-            currentLock = camRayInfo.transform.gameObject;
-
-        
 
 
     }
         
     void FixedUpdate()
         {
-
-            if (currentLock)
-                {
-                //Debug.Log("Player is engaging!");
-                Transform aimspot = currentLock.transform;
-                    trackingReticle.enabled = true;
-                    AimGuns(aimspot);
-                    TrackReticle(trackingReticle, currentLock);
-                }
-                else
+        var targViewportPoint = Camera.main.WorldToViewportPoint(worldspaceLock.position);
+        if (worldspaceLock)
+        {
+            LockReticleUpdate(worldspaceLock.position);
+            //BarrelToTarget(myPM.wpc0);
+            // IF x > 1 OR z is NEGATIVE then the point is behind the camera viewport
+            if (targViewportPoint.x > 1 || targViewportPoint.z < 0)
             {
-                //Debug.Log("Lock is null!");
-                trackingReticle.enabled = false;
+                trackingReticle.enabled = false; // keep tracking reticle off
             }
+            else
+                trackingReticle.enabled = true; // else we have a current lock so true 
+            Debug.Log("Viewport point of current target - " + targViewportPoint);
+            //Debug.Log("Player is engaging!");
+            
+            
+            
         }
+        else
+            trackingReticle.enabled = false; // else currentLock should be empty here so we dont need reticle
+
+        
+    }
     
     private void OnTriggerEnter(Collider other)
     {
-        String name = other.gameObject.name;
+        var name = other.gameObject.name;
 
 
         if (name.Equals("TargetingArea"))
         {
             other.gameObject.SendMessageUpwards("MovedIntoRange", gameObject);
         }
+        else if (other.gameObject.CompareTag("NPC"))
+            SendMessageUpwards("MovedIntoRange", other.transform);
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        String name = other.gameObject.name;
+        var name = other.gameObject.name;
 
 
         if (name.Equals("TargetingArea"))
@@ -201,5 +161,11 @@ public class PlayerTA : MonoBehaviour
             other.gameObject.SendMessageUpwards("MovedOutOfRange", gameObject);
         }
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(lastCastHit.point, 1f);
     }
 }
