@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3419752595763569718}
   - component: {fileID: 6791358989213176209}
   - component: {fileID: 7921481585503338797}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: GreenPew
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   TTL: 3
   bullet_velocity: 80
   m_dmg: 1
+  emitterOnCollision: {fileID: 6821978494458994578, guid: 26df4340c0af60249876fdb791a8197c, type: 3}
 --- !u!33 &274602548472682639
 MeshFilter:
   m_ObjectHideFlags: 0

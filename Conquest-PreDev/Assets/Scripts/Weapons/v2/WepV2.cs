@@ -31,6 +31,8 @@ public class WepV2 : MonoBehaviour
     public float spinupTime;
     public float maxFireRate;
     private float curr_spinup;
+
+    
     private void Awake()
     {
         Debug.Log("Loaded weapon prefab: " + stats.wepName);

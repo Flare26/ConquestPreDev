@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_boostSpeed: 3000
   m_turnSens: 10
   m_hoverForce: 1700
-  m_hoverHeight: 2
+  m_hoverHeight: 1.5
   m_hoverPoints:
   - {fileID: 5046404719555625064}
   - {fileID: 2709591891595857353}

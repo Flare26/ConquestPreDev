@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649185}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_WristRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649187}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649189}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_UpperArmRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649191}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_WristLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649193}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RefPosWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.999999, z: 1}
   m_Children:
   - {fileID: 4116537065582332294}
+  - {fileID: 3066120163130342089}
   m_Father: {fileID: 4116537065299649259}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,7 +172,7 @@ GameObject:
   - component: {fileID: 8275495369267796510}
   - component: {fileID: 7774565314681833797}
   - component: {fileID: 240411361926174930}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HonorCommando
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,22 +241,22 @@ MonoBehaviour:
   nearbyObjects: []
   aiGroup: {fileID: 11400000, guid: 382c633e4e083b64786444f456fbacbd, type: 2}
   state: 0
-  courage: 50
+  courage: 90
   fovMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4097
   treatNeutralCharactersAsEnemies: 1
-  useFieldOfView: 0
+  useFieldOfView: 1
   fovAngle: 90
-  useRaycastsForFov: 0
+  useRaycastsForFov: 1
   headTransform: {fileID: 4116537065299649241}
-  detectionRange: 30
+  detectionRange: 45
   alwaysVisibleRange: 2
   waypointsLoop: 0
   randomWaypoints: 0
   dangerPosition: {x: 0, y: 0, z: 0}
-  lookAtPlayerAndTarget: 1
-  neverFlee: 1
+  lookAtPlayerAndTarget: 0
+  neverFlee: 0
   targetMemory: 20
   onEnteredCombat:
     m_PersistentCalls:
@@ -266,7 +267,7 @@ MonoBehaviour:
   onNoMoreVisibleEnemies:
     m_PersistentCalls:
       m_Calls: []
-  fleeTime: 10
+  fleeTime: 5
   disableSetTarget: 0
 --- !u!114 &1542978969783488644
 MonoBehaviour:
@@ -303,7 +304,7 @@ MonoBehaviour:
       m_Calls: []
   walkingSpeed: 3
   runningSpeed: 2
-  armor: 20
+  armor: 0
   health: 500
   maxHealth: 500
   healthRegeneration: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
   useRagdoll: 1
   reserveDestinationPosition: 1
   showGuiInfo: 0
-  aimTransform: {fileID: 4116537065299649231}
+  aimTransform: {fileID: 4116537065299649241}
   onKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -479,7 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4116537065299649199}
   - component: {fileID: 4116537065288315845}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SK_AdvancedCombatDroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649217}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_PinkyRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649219}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ShoulderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649221}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_PinkyLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649223}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_PinkyRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649225}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThighLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649227}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThighRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649229}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ShoulderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649231}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThumbRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649235}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThumbRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649237}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThumbLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649239}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ThumbLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,7 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649241}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649243}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_UpperArmLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649245}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ToesLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649247}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ToesRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649249}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_FootLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649251}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_FootRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649253}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_CalfLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649255}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_CalfRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649257}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_HandLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649259}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_HandRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649261}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ForearmLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,7 +1310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_ForearmRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649265}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_IndexLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_IndexLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1401,7 +1402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649269}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_HipLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1432,7 +1433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_HipRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1463,7 +1464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649273}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649275}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_PinkyLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,7 +1528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649277}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_IndexRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1558,7 +1559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4116537065299649279}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ACD_IndexRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1592,7 +1593,7 @@ GameObject:
   - component: {fileID: 4116537065584626534}
   - component: {fileID: 8767255786622361140}
   - component: {fileID: 7171883218546260923}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_AssaultPistolBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1698,7 @@ MonoBehaviour:
   shootEffect: {fileID: 0}
   shootEffectPositionTransform: {fileID: 0}
   parentShootEffect: 0
-  projectileSpawnParent: {fileID: 0}
+  projectileSpawnParent: {fileID: 3066120163130342089}
 --- !u!114 &7171883218546260923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,6 +1727,36 @@ MonoBehaviour:
   preference: 1
   attackSound: {fileID: 0}
   hitSound: {fileID: 0}
+--- !u!1 &5623115651434405836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3066120163130342089}
+  m_Layer: 12
+  m_Name: AIM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3066120163130342089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623115651434405836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0022, y: 0.2196, z: 1.1533}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4116537065299649193}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4114044465949135688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1781,9 +1812,17 @@ PrefabInstance:
       propertyPath: contextProvider
       value: 
       objectReference: {fileID: 6096710297172787582}
+    - target: {fileID: 3096361669570714762, guid: dc824234c504e3d47b6a7f644b1fafef, type: 3}
+      propertyPath: groundLayerMask.m_Bits
+      value: 32769
+      objectReference: {fileID: 0}
     - target: {fileID: 8385165297353563379, guid: dc824234c504e3d47b6a7f644b1fafef, type: 3}
       propertyPath: m_Name
       value: AiComponents
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385165297353563379, guid: dc824234c504e3d47b6a7f644b1fafef, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc824234c504e3d47b6a7f644b1fafef, type: 3}

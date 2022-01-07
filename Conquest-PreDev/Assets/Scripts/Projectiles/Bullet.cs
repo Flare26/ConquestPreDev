@@ -7,7 +7,7 @@ public abstract class Bullet : MonoBehaviour
     public float bullet_velocity = 50f;
     public int m_dmg;
     Rigidbody m_Rigidbody;
-
+    [SerializeField] ParticleSystem emitterOnCollision;
     private void Awake()
     {
         //Ignore other bullet collisions
@@ -16,16 +16,22 @@ public abstract class Bullet : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log("Bullet hit somethign with tag " + collision.transform.tag);
         var other = collision.gameObject;
-        if (other.CompareTag("Wall"))
+        if (other.transform.CompareTag("Wall"))
         {
             //Debug.Log("Congrats you shot a wall...");
+            var tmp = Instantiate(emitterOnCollision, transform, true);
             DestroyBullet();
             return;
         }
-        if (other.CompareTag("Floor"))
+        if (other.transform.CompareTag("Floor"))
         {
             //Debug.Log("Congrats you shot the floor...");
+            Debug.Log("Bullet hit floow");
+            var tmp = Instantiate(emitterOnCollision);
+            tmp.Play();
+            Destroy(tmp, 5f);
             DestroyBullet();
             return;
         }
@@ -34,13 +40,20 @@ public abstract class Bullet : MonoBehaviour
             DestroyBullet();
             return;
         }
-        if (other.CompareTag("Environment"))
+        if (other.transform.CompareTag("Environment"))
         {
+            Debug.Log("Bullet hit environment");
+
             DestroyBullet();
             return;
         }
     }
-
+    private void OnDestroy()
+    {
+        var tmp = Instantiate(emitterOnCollision, transform.position, transform.rotation);
+        tmp.Play();
+        Destroy(tmp, 5f);
+    }
 
     public void HitTarget()
     {
