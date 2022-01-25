@@ -7,7 +7,7 @@ using System.Linq;
 using RVModules.RVSmartAI.GraphElements;
 using RVModules.RVSmartAI.GraphElements.Stages;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -33,13 +33,13 @@ namespace RVModules.RVSmartAI.Editor
 
         private static void AnalyseGraph(bool _fix)
         {
-            if (PrefabStageUtility.GetCurrentPrefabStage() == null)
+            if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() == null)
             {
                 Debug.Log("AiGraph analysis is available only in prefab mode");
                 return;
             }
 
-            var selectedGo = PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot;
+            var selectedGo = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot;
 
             var graph = selectedGo.GetComponent<AiGraph>();
             if (graph == null)

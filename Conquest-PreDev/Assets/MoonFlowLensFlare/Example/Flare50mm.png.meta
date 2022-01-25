@@ -57,6 +57,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -388,6 +389,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Flare50mm_4: 3689403682371841031
+      Flare50mm_8: -2407933610978599584
+      Flare50mm_2: 950713739431239884
+      Flare50mm_0: 6100254404153539852
+      Flare50mm_6: 4273877367383709640
+      Flare50mm_7: 3983904466825391187
+      Flare50mm_1: -8016380225518871097
+      Flare50mm_10: 7574425131732013326
+      Flare50mm_9: 526017677946592219
+      Flare50mm_5: 4365825945205927291
+      Flare50mm_3: -4186782764631174399
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

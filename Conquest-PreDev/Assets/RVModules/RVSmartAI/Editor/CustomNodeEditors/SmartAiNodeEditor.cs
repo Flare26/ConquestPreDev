@@ -13,7 +13,7 @@ using RVModules.RVSmartAI.GraphElements.Utilities;
 using RVModules.RVSmartAI.Nodes;
 using RVModules.RVUtilities.Extensions;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+
 using UnityEngine;
 using XNode;
 using XNodeEditor;
@@ -175,10 +175,10 @@ namespace RVModules.RVSmartAI.Editor.CustomNodeEditors
             if (GetSelectedGraphElement(out var aiGraph, out var selectedGraphElement)) return;
 
             var path = "";
-            if (PrefabStageUtility.GetCurrentPrefabStage() == null)
+            if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() == null)
                 path = AssetDatabase.GetAssetPath(NodeEditorWindow.current.lastOpenedSmartAiGraphId);
             else
-                path = PrefabStageUtility.GetCurrentPrefabStage().prefabAssetPath;
+                path = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().prefabAssetPath;
 
             if (string.IsNullOrEmpty(path)) path = Application.dataPath + "\\";
             else

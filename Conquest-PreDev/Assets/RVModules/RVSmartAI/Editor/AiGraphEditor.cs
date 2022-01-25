@@ -12,7 +12,7 @@ using RVModules.RVSmartAI.Nodes;
 using RVModules.RVUtilities;
 using RVModules.RVUtilities.Editor;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+
 using UnityEngine;
 using XNode;
 using XNodeEditor;
@@ -52,10 +52,10 @@ namespace RVModules.RVSmartAI.Editor
             titleContent.text = aiGraph.name;
             NodeEditorWindow.current.titleContent = titleContent;
 
-            if (PrefabStageUtility.GetCurrentPrefabStage()?.prefabContentsRoot != null)
-                if (PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>() != null)
-                    if (aiGraph != PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>())
-                        AssignGraphForCurrentNodeEditorWindow(PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>());
+            if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.prefabContentsRoot != null)
+                if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>() != null)
+                    if (aiGraph != UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>())
+                        AssignGraphForCurrentNodeEditorWindow(UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot.GetComponent<AiGraph>());
 
             if (aiGraph.RootNode == null && aiGraph.nodes.Length > 0) aiGraph.AssignRootNode();
 
@@ -81,7 +81,7 @@ namespace RVModules.RVSmartAI.Editor
                 }
             }
 
-            if (!aiGraph.IsRuntimeDebugGraph && PrefabUtility.IsAnyPrefabInstanceRoot(aiGraph.gameObject) && PrefabStageUtility.GetCurrentPrefabStage() == null)
+            if (!aiGraph.IsRuntimeDebugGraph && PrefabUtility.IsAnyPrefabInstanceRoot(aiGraph.gameObject) && UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() == null)
                 if (loadedGraphPrefab != aiGraph.gameObject)
                 {
                     var c = GUI.contentColor;
@@ -240,7 +240,7 @@ namespace RVModules.RVSmartAI.Editor
 
             Selection.selectionChanged += () =>
             {
-                if (CantEditGraph(null) || Application.isPlaying || PrefabStageUtility.GetCurrentPrefabStage() != null) return;
+                if (CantEditGraph(null) || Application.isPlaying || UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null) return;
 
                 var go = Selection.activeGameObject;
                 if (go == null) return;
@@ -283,7 +283,7 @@ namespace RVModules.RVSmartAI.Editor
         {
             // dont allow scene-only graphs
             if (!_aiGraph.IsRuntimeDebugGraph && !PrefabUtility.IsPartOfPrefabAsset(_aiGraph.gameObject) &&
-                PrefabStageUtility.GetPrefabStage(_aiGraph.gameObject) == null)
+                UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage(_aiGraph.gameObject) == null)
             {
                 if (onlyCheck) return false;
 
@@ -359,7 +359,7 @@ namespace RVModules.RVSmartAI.Editor
 
             return
                 EditorApplication.isCompiling ||
-                PrefabStageUtility.GetPrefabStage(aiGraph.gameObject) != null && EditorApplication.isPlayingOrWillChangePlaymode ||
+                UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage(aiGraph.gameObject) != null && EditorApplication.isPlayingOrWillChangePlaymode ||
                 !aiGraph.IsRuntimeDebugGraph && EditorApplication.isPlayingOrWillChangePlaymode ||
                 PrefabUtility.IsPartOfPrefabAsset(aiGraph.gameObject);
         }
@@ -411,7 +411,7 @@ namespace RVModules.RVSmartAI.Editor
             if (loadedGraphPrefab == null) return;
 
             //WARNING this is risky!
-            if (PrefabStageUtility.GetCurrentPrefabStage() != null)
+            if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null)
             {
                 loadedGraphPrefab = null;
                 return;
